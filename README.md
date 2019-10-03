@@ -1,68 +1,243 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Lite Components - Grid Documentation
 
-## Available Scripts
+## Import
 
-In the project directory, you can run:
+```
+import { Grid } from '@lite/components';
+const { Row, Col } = Grid;
+```
 
-### `npm start`
+## Basic Usage (Equal Sized Column)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+<Row>
+	<Col>...</Col>
+	<Col>...</Col>
+	<Col>...</Col>
+</Row>
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Defining Column Span
 
-### `npm test`
+In default, maximum allowed column span per row is `12`. Just like _Bootstrap_ - you already know!
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+<Row>
+	<Col span={12}>...</Col>
+	<Col span={6}>...</Col>
+	<Col span={6}>...</Col>
+	<Col span={4}>...</Col>
+	<Col span={4}>...</Col>
+	<Col span={4}>...</Col>
+</Row>
+```
 
-### `npm run build`
+## Auto Column Width
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use `span="auto"` props classes to size columns based on the natural width of their content.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```
+<Row>
+	<Col span="auto">...</Col>
+	<Col span="auto">...</Col>
+	<Col>...</Col>
+</Row>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Mix Example
 
-### `npm run eject`
+Before go any further, Hope this example will help you to understand the most-basic usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+<Row>
+	<Col span={7}>...</Col>
+	<Col span="auto">...</Col>
+	<Col>...</Col>
+	<Col span={12}>...</Col>
+	<Col span={8}>...</Col>
+	<Col>...</Col>
+</Row>
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## The Magic Begins: Custom Column Count
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+In default, max allowed column span per row is `12` - Just like common grid system that you already know.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+But in this case, you can **fully customize** the maximum column span. Need `5`, `7`, `13` or another **absurdly odd-count & equal** columns? doesn't matter. Just add `maxCol` props in `Row` component.
 
-## Learn More
+### 14 Columns Example
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+<Row maxCol={14}>
+	<Col span={2}>...</Col>
+	<Col span={2}>...</Col>
+	<Col span={2}>...</Col>
+	<Col span={2}>...</Col>
+	<Col span={2}>...</Col>
+	<Col span={2}>...</Col>
+	<Col span={2}>...</Col>
+	<Col span={10}>...</Col>
+	<Col span={4}>...</Col>
+</Row>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 5 Columns Example
 
-### Code Splitting
+```
+<Row maxCol={5}>
+	 <Col span={2}>...</Col>
+	 <Col span={3}>...</Col>
+	 <Col span={1}>...</Col>
+	 <Col span={1}>...</Col>
+	 <Col span={1}>...</Col>
+	 <Col span={1}>...</Col>
+	 <Col span={1}>...</Col>
+</Row>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### 13 - Fibonacci Example
 
-### Analyzing the Bundle Size
+```
+<Row maxCol={13}>
+	<Col span={13}>...</Col>
+	<Col span={8}>...</Col>
+	<Col span={5}>...</Col>
+	<Col span={5}>...</Col>
+	<Col span={3}>...</Col>
+	<Col span={2}>...</Col>
+	<Col span={1}>...</Col>
+	<Col span={1}>...</Col>
+	<Col span={1}>...</Col>
+</Row>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Gutter & Outer Gutter
 
-### Making a Progressive Web App
+use `gutter` props in `Row` components to set space size between columns. and `outerGutter` props to set the outer space size in the row.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```
+<Row gutter={8} outerGutter={16}>
+	<Col>...</Col>
+	<Col>...</Col>
+	<Col>...</Col>
+</Row>
+```
 
-### Advanced Configuration
+## Justify and Aligning
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Use `justfy` props on `Row` component to horizontally justify the contents (`Col`):
 
-### Deployment
+```
+<Row justify="center">
+	<Col span={3}>...</Col>
+	<Col span={2}>...</Col>
+</Row>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Use `align` props on `Row` component to vertically align the contents (`Col`):
 
-### `npm run build` fails to minify
+```
+<Row align="center">
+	<Col span={3}>...</Col>
+	<Col span={2}>...</Col>
+</Row>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Use `alignSelf` props on `Col` component to vertically align the (`Col`) it self:
+
+```
+<Row>
+	<Col span={3}>...</Col>
+	<Col span={2} alignSelf="start">...</Col>
+</Row>
+```
+
+## Responsive
+
+Set an array into `span` props to specify the breakpoints.
+
+- since this was created based mobile first design, all media query will be consistently use:
+  `@media screen and (min-width: <scrFrom> px)`.
+- _first index_ of array will be containing **number** only. it will set the default column span width from screen size 0 until the next breakpoint.
+- _rest index_ of the array will be containing **objects** with 2 keys: `scrFrom` (screen from) is for the breakpoint, and `span` to set the column span width.
+
+**example:**
+
+```
+const span = [12, {scrFrom: 768, span: 6}, {scrFrom: 992, span: 3}];
+```
+
+```
+<Col span={span}>...</Col>
+```
+
+is equal to this **scss**:
+
+```
+.col{
+	width: 100%;
+	@media screen and (min-width: 768px){
+		width: 50%;
+	}
+	@media screen and (min-width: 992px){
+		width: 25%;
+	}
+}
+```
+
+- `width: 100%` is the result of `12/12 * 100%` and will be applied on screen `< 768px`;
+- `width: 50%` is the result of `6/12 & 100%` and will be applied on screen `>= 768px` and `< 992px`;
+- `width: 25%` is the result of `3/12 & 100%` and will be applied on screen `>= 992px`;
+
+### Create a breakpoint rules
+
+Here is an example how to create a reusable breakpoint rules:
+
+```
+// Based on Bootstrap 4
+const col = {
+	sm: (span = 0) => ({ scrFrom:  576, span }),
+	md: (span = 0) => ({ scrFrom:  768, span }),
+	lg: (span = 0) => ({ scrFrom:  992, span }),
+	xl: (span = 0) => ({ scrFrom:  1200, span }),
+};
+```
+
+```
+<Row>
+	<Col span={[12, col.sm(6), col.md(4), col.lg(3), col.xl(2)]}>...</Col>
+</Row>
+```
+
+equals to:
+
+```
+<div class="row">
+	<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">...</div>
+</div>
+```
+
+## Props
+
+`Row` components:
+
+| props         | propType                                                   | defaultProps                                              | usage                                                                                                   |
+| ------------- | ---------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `maxCol`      | `number`                                                   | `12`                                                      | to set maximum allowed column span in the `Row`.                                                        |
+| `gutter`      | `number`                                                   | `8`                                                       | to set the spacing between children columns (`Col`).                                                    |
+| `outerGutter` | `number`                                                   | `0`                                                       | to set the spacing in the outer side of the `Row`.                                                      |
+| `align`       | `oneOf(['baseline', 'stretch', 'center', 'end', 'start'])` | `null` - will be set into default css value: `stretch`    | to align all `Col` in the `Row` vertically.                                                             |
+| `justify`     | `oneOf(['between', 'around', 'center', 'end', 'start'])`   | `null` - will be set into default css value: `flex-start` | to justify all `Col` in the `Row` horizontally.                                                         |
+| `className`   | `string`                                                   | `''`                                                      | to apply custom class (style) into `Row`. **Use it carefully!** it may replace the default style rules. |
+
+`Col` components:
+
+| props       | propType                                                   | defaultprops                                        | values                                         | usage                                                                                                   |
+| ----------- | ---------------------------------------------------------- | --------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `span`      | `number` or `string` or `arrayOf(object)`                  | `0`                                                 | `0`                                            | to set the column equally.                                                                              |
+|             |                                                            |                                                     | `-1`                                           | to hide the `Col` - `display: none`.                                                                    |
+|             |                                                            |                                                     | `1` upto `maxCol`                              | to set the column width based on `span/maxCol*100%`                                                     |
+|             |                                                            |                                                     | `"auto"`                                       | to set the column width based on it's content.                                                          |
+|             |                                                            |                                                     | `[12, { scrFrom: number, span: number }, ...]` | to set the column width with media query rules.                                                         |
+| `alignSelf` | `oneOf(['baseline', 'stretch', 'center', 'end', 'start'])` | `null` - will be set into default css value: `auto` |                                                | to vertically align on applied `Col` only.                                                              |
+| `className` | string                                                     | `''`                                                |                                                | to apply custom class (style) into `Col`. **Use it carefully!** it may replace the default style rules. |
