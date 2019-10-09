@@ -1,4 +1,4 @@
-# AW React Grid Documentation
+# AW React Grid
 
 This is a React mobile first - flexbox grid system.
 
