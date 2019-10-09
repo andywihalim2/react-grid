@@ -39,7 +39,12 @@ const Page = () => {
       </Col>
       <Col span={6}>
         <h1>Grid System</h1>
-        <h3>Flexible Columns - Mobile-first Flexbox Grid System</h3>
+        <Row gutter={16} align="center">
+          <Col><h3>Flexible Columns - Mobile-first Flexbox Grid System</h3></Col>
+          <Col span="auto">
+            <a href="https://github.com/andywihalim2/react-grid">Visit Github repo</a>
+          </Col>
+        </Row>
 
         <h2>Basic Usage (Equal Grid)</h2>
         <Row align="start">
@@ -189,7 +194,8 @@ const Page = () => {
         <pre>{respon3a}</pre>
         <h5>Render</h5>
         <pre>{respon3b}</pre>
-
+        <h5>Contributor</h5>
+        <pre><a href="https://github.com/andywihalim2">Andy Wihalim</a></pre>
       </Col>
     </Row>
   );
