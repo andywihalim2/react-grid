@@ -1,4 +1,4 @@
-# Lite Components - Grid Documentation
+# AW React Grid Documentation
 
 ## Import
 
