@@ -1,11 +1,12 @@
 # AW React Grid Documentation
 
-## Import
+This is a React mobile first - flexbox grid system.
 
-```
-import { Grid } from '@lite/components';
-const { Row, Col } = Grid;
-```
+## Demo
+
+Preview demo:
+
+https://andywihalim2.github.io/react-grid/
 
 ## Basic Usage (Equal Sized Column)
 
