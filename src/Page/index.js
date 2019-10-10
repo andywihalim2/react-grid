@@ -34,10 +34,8 @@ const Page = () => {
   const content = (text = 'Sample Column') => <div style={cardStyle}>{text}</div>;
 
   return (
-    <Row outerGutter={16} maxCol={10}>
-      <Col span={2}>
-      </Col>
-      <Col span={6}>
+    <Row outerGutter={16}>
+      <Col>
         <h1>Grid System</h1>
         <Row gutter={16} align="center">
           <Col><h3>Flexible Columns - Mobile-first Flexbox Grid System</h3></Col>
@@ -195,7 +193,7 @@ const Page = () => {
         <h5>Render</h5>
         <pre>{respon3b}</pre>
         <h5>Contributor</h5>
-        <pre><a href="https://github.com/andywihalim2">Andy Wihalim</a></pre>
+        <a href="https://github.com/andywihalim2">Andy Wihalim</a>
       </Col>
     </Row>
   );
